@@ -28,14 +28,14 @@ function drawCircle(obj) {
   ctx.fill();
 }
 
+// Fish Horisontal and Vertical Speed
+fish.speedX = Math.random() * 2 + 1;
+fish.speedY = Math.random() * 1 - 0.5;
+
 // Loops the Drawings
 function draw() {
   ctx.fillStyle = "blue";
   ctx.fillRect(0, 0, Width, Height);
-
-  // Fish Horisontal and Vertical Speed
-fish.speedX = Math.random() * 2 + 1;
-fish.speedY = Math.random() * 1 - 0.5;
 
 // Moves Fish
 fish.x += fish.speedX;
@@ -64,6 +64,7 @@ for (let i = 0; i < 10; i++) {
     speedX: Math.random() * 2 + 1,
     speedY: Math.random() * 1 - 0.5,
   });
+}
 
 // Makes Varying Sizes and Speed
 fishList.forEach(f => {
@@ -80,7 +81,6 @@ fishList.forEach(f => {
 
 // Makes Many Pollution Particles
 const pollutionList = [];
-
 for (let i = 0; i < 5; i++) {
   pollutionList.push({
     x: Math.random() * Width,
@@ -89,6 +89,7 @@ for (let i = 0; i < 5; i++) {
     color: "brown"
   });
 }
+
 
 // Loops the Creation of Pollution Particles
 pollutionList.forEach(p => {
@@ -111,9 +112,8 @@ canvas.addEventListener("click", function(event){
     radius: 16,
     color: "brown"
   });
-});
+}); 
 
 requestAnimationFrame(draw);  
-}
-  
 draw();
+}
