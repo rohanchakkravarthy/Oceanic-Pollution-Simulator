@@ -5,35 +5,74 @@ const Width = canvas.width;
 const Height = canvas.height;
 
 // Fish Position, Color, and Size
-const fish = {
+function drawFish(x, y, 16, "yellow") {
+  ctx.fillStyle = color;
+  
   ctx.beginPath();
   ctx.ellipse(x, y, 20, 20 * 0.6, 0, 0, Math.PI * 2);
   ctx.fill();
-  color: "yellow",
-  radius: 20
+
+  ctx.beginPath();
   ctx.moveTo(x - 5, 16);
   ctx.lineTo(x - 5 - 5 * 0.8, y - 5 * 0.5);
   ctx.lineTo(x - 5 - 5 * 0.5, y + 5 * 0.5);
-}
+
 ctx.closePath();
 ctx.fill();
-};
+}
 
-// Pollutant Position, Color, and Size
-const pollutant ={
+// Main Fish
+const fish = {
   x: Math.random() * Width,
-  y: Math.random() * Height,
-  color: "brown",
-  radius: 16
+  y: Math.random() * (Height - 100),
+  size: 20,
+  color: "yellow",
+  speedX: Math.random() * 2 + 1,
+  speedY: Math.random() * 1 - 0.5
 };
 
-// Draws the Circles
-function drawCircle(obj) {
+// Makes Many Fish
+const fishList = [];
+for (let i = 0; i < 10; i++) {
+  fishList.push({
+    x: Math.random() * Width,
+    y: Math.random() * (Height - 100),
+    size: Math.random() * 20 + 10,
+    color: ["yellow", "orange","pink"] [Math.floor(Math.random() * 3)],
+    speedX: Math.random() * 2 + 1,
+    speedY: Math.random() * 1 - 0.5
+  });
+}
+
+// Creates the Pollution
+const pollutionList = [];
+for (let i = 0; i < 5; i++) {
+  pollutionList.push({
+    x: Math.random() * Width,
+    y: Math.random() * (Height - 100),
+    radius: Math.random() * 20 + 10,
+    color: "brown",
+  });
+}
+
+// Draws the Pollution
+function drawPollution(p) {
   ctx.beginPath();
-  ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2);
-  ctx.fillStyle = obj.color;
+  ctx.arc(p.x, p.y, p.9, 0, Math.PI * 2);
+  ctx.fillStyle = p.color;
   ctx.fill();
 }
+
+// Makes Pollution Appear When Clicked
+canvas.addEventListener("click", function (event) {
+  const rect = canvas.getBoundingClientRect();
+  pollutionList.push({
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top,
+    radius: 16,
+    color: "brown"
+  });
+});
 
 // Fish Horisontal and Vertical Speed
 fish.speedX = Math.random() * 2 + 1;
