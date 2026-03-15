@@ -6,10 +6,17 @@ const Height = canvas.height;
 
 // Fish Position, Color, and Size
 const fish = {
-  x: Math.random() * Width,
-  y: Math.random() * Height,
+  ctx.beginPath();
+  ctx.ellipse(x, y, 20, 20 * 0.6, 0, 0, Math.PI * 2);
+  ctx.fill();
   color: "yellow",
   radius: 20
+  ctx.moveTo(x - 5, 16);
+  ctx.lineTo(x - 5 - 5 * 0.8, y - 5 * 0.5);
+  ctx.lineTo(x - 5 - 5 * 0.5, y + 5 * 0.5);
+}
+ctx.closePath();
+ctx.fill();
 };
 
 // Pollutant Position, Color, and Size
