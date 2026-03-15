@@ -37,7 +37,7 @@ for (let i = 0; i < 11; i++) {
     x: Math.random() * Width,
     y: Math.random() * (Height - 100),
     size: Math.random() * 20 + 10,
-    color: i ==== 0 ? "yellow" : ["yellow", "orange","pink"] [Math.floor(Math.random() * 3)],
+    color: i === 0 ? "yellow" : ["yellow", "orange","pink"] [Math.floor(Math.random() * 3)],
     speedX: Math.random() * 2 + 1,
     speedY: Math.random() * 1 - 0.5
   });
