@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,8 @@
       background: #05c1f5;
       color: white;
     }
- header {
+
+    header {
       background: #89c7c5;
       padding: 15px;
     }
@@ -19,7 +20,7 @@
     nav {
       margin-top: 10px;
     }
-   
+
     .nav-btn {
       background-color: #db6060;
       padding: 12px 18px;
@@ -31,10 +32,11 @@
       transition: 0.2s;
     }
 
-     .nav-btn:hover {
+    .nav-btn:hover {
       background-color: #b94f4f;
     }
-      section {
+
+    section {
       padding: 40px;
       max-width: 900px;
       margin: auto;
@@ -59,7 +61,8 @@
     <a href="#simulation" class="nav-btn">Cleanup Game</a>
   </nav>
 </header>
-  <!-- HOME SECTION -->
+
+<!-- HOME SECTION -->
 <section id="home">
   <h2>Protect Our Oceans</h2>
   <p>
@@ -75,7 +78,8 @@
     dumping trash into the sea every minute. If we don’t act now, there may be more plastic than fish by 2050.
   </p>
 </section>
-     <!-- MISSION SECTION -->
+
+<!-- MISSION SECTION -->
 <section id="mission">
   <h2>Our Mission</h2>
   <p>
@@ -93,10 +97,10 @@
     encourages you to protect our oceans and spread awareness in your community.
   </p>
 </section>
-  
+
 <!-- SIMULATION SECTION -->
 <section id="simulation">
-  </h2>Simulator</h2>
+  <h2>Simulator</h2>
   <p>
     This interactive simulator shows how pollution spreads through the ocean. Click anywhere in the water
     to drop pollutants and watch how the environment reacts. The fish will swim, the pollution will spread,
@@ -106,8 +110,11 @@
     This simple model represents a much larger issue: once pollution enters the ocean, it is extremely
     difficult to remove. Even small actions can have big consequences.
   </p>
-  
-  <!-- JAVASCRIPT (unchanged simulator) -->
+
+  <canvas id="ocean" width="800" height="600"></canvas>
+</section>
+
+<!-- JAVASCRIPT -->
 <script>
 const canvas = document.getElementById("ocean");
 const ctx = canvas.getContext("2d");
