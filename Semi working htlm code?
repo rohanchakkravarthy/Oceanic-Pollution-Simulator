@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Plastic Rain</title>
+    <style>
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            background: #b0d0f0; 
+            font-family: sans-serif; 
+        }
+
+        #counter-display { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 100; 
+            text-align: center; 
+            pointer-events: none; 
+        }
+
+        #count-number { 
+            font-size: 150px; 
+            font-weight: 900; 
+            color: rgba(15, 34, 51, 0.2); 
+            margin: 0; 
+        }
+
+        .title-label { 
+            font-size: 20px; 
+            letter-spacing: 5px; 
+            color: rgba(0, 80, 150, 0.4); 
+            text-transform: uppercase; 
+        }
+
+        .bottle { 
+            position: absolute; 
+            top: -150px; 
+            pointer-events: none; 
+            animation: fall-path linear forwards; 
+        }
+
+        @keyframes fall-path {
+            0% { transform: translateY(0) rotate(var(--start-rotation)); }
+            100% { transform: translateY(115vh) rotate(var(--end-rotation)); }
+        }
+    </style>
+</head>
+<body>
+    <div id="counter-display">
+        <div class="title-label">Plastic Bottles Thrown Into The Ocean</div>
+        <h1 id="count-number">0</h1>
+    </div>
+
+    <script>
+        const countElement = document.getElementById('count-number');
+        let bottleCount = 0;
+
+        setInterval(() => {
+            bottleCount++;
+            countElement.innerText = bottleCount.toLocaleString();
+        }, 18.8);
+
+        function spawnBottle() {
+            const bottleElement = document.createElement('div');
+            
+            const size = Math.random() * 25 + 25;
+            const rotationStart = Math.random() * 280 + 20;
+            const rotationEnd = rotationStart + (Math.random() * 360 + 360);
+            const fallDuration = Math.random() * 2 + 2;
+
+            Object.assign(bottleElement.style, {
+                left: Math.random() * 100 + "vw", 
+                width: size + "px", 
+                height: size * 2.5 + "px",
+                background: 'rgba(255,255,255,0.7)', 
+                borderRadius: '10px 10px 5px 5px',
+                border: '2px solid rgba(200,200,200,0.5)', 
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+                animationDuration: fallDuration + "s", 
+                opacity: Math.random() * 0.5 + 0.5
+            });
+            
+            bottleElement.classList.add('bottle');
+            bottleElement.style.setProperty('--start-rotation', rotationStart + 'deg');
+            bottleElement.style.setProperty('--end-rotation', rotationEnd + 'deg');
+
+            const bottleCap = document.createElement('div');
+            Object.assign(bottleCap.style, {
+                position: 'absolute', 
+                top: '-8px', 
+                left: '50%', 
+                transform: 'translateX(-50%)',
+                width: size * 0.6 + 'px', 
+                height: '8px', 
+                background: '#3399ff', 
+                borderRadius: '3px 3px 0 0'
+            });
+
+            bottleElement.append(bottleCap);
+            document.body.append(bottleElement);
+            
+            setTimeout(() => bottleElement.remove(), fallDuration * 1000);
+        }
+
+        setInterval(spawnBottle, 55);
+    </script>
+</body>
+</html>
