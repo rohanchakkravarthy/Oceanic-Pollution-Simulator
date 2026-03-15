@@ -46,8 +46,8 @@ if (fish.x > Width) fish.x = 0;
 if (fish.x < 0) fish.x = Width;
 
 // Keeps Fish Above the Sand Level
-if (fish.y > Height - 100) fish.y = Height - 100;
-if (fish.y < 0) fish.y = 0;
+if (fish.y > Height - 100) fish.y = random;
+if (fish.y < 0) fish.y = random;
 
 drawCircle(fish);
 drawCircle(pollutant);
